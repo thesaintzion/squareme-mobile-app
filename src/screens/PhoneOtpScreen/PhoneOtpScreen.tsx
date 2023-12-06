@@ -75,7 +75,6 @@ export const PhoneOtpScreen: React.FC<LocalProps> = ({ navigation }) => {
                 <Spacer size={20} />
                 <AppText.Bold style={{ width: '80%', alignSelf: 'center', fontSize: 15, textAlign: 'center', color: colors.TEXT_PRIMARY }}>
                     {formatCountdown()}
-                    {/* 0.00 */}
                 </AppText.Bold>
                 <Spacer size={40} />
 
@@ -84,7 +83,6 @@ export const PhoneOtpScreen: React.FC<LocalProps> = ({ navigation }) => {
                 </AppText>
             </ScrollView>
 
-            {/* Disable buttons when timer still counting down */}
             <View style={styles.actionsCon}>
                 <AppButton disabled={countdown > 0} onPress={() => handleSendOTP('whatsapp')} text='Call me' type='light' style={{ borderWidth: 1 }} />
                 <AppButton disabled={countdown > 0} onPress={() => handleSendOTP('whatsapp')} text='Whatsapp' />
