@@ -3,11 +3,11 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "start": "npx react-native start  --reset-cache",
     "android": "npx react-native run-android",
     "ios": "npx react-native run-ios --simulator=iPhone 13",
-    "start": "npx react-native start  --reset-cache",
-    "ios:update": "cd ios && pod update && cd ..",
     "ios:install": "cd ios && pod install && cd ..",
+    "ios:update": "cd ios && pod update && cd ..",
     "android:clean": "cd android && chmod +x gradlew && ./gradlew clean && cd ..",
     "link-assets": "npx react-native-asset",
     "lint": "eslint .",

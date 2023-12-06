@@ -29,12 +29,23 @@ Here is an overview of the project's folder structure:
 
 To get started with the project, follow these steps:
 
-1. Clone the repository: `git clone [add-url-later]`
+1. Clone the repository: `git clone [git@github.com:thesaintzion/squareme-mobile-app.git]`
 2. Install dependencies: `npm install`
 3. Run the app: `npm start`
 
 
+## Useful commands
 
-## Usefull commands
+- Start the dev sever: `npm start`
+- Run on Android: `npm run android`
+- Run on ios: `npm run ios`
+- Install dependencies for IOS: `npm run ios:install`
+- Update dependencies for IOS: `npm run ios:update`
+- Gradle Clean for Android: `npm run android:clean`
+- Link assets (eg: if you add new fonts..): `npm run link-assets`
+- Run lint: `npm run lint`
+- Get list of available devices on your machine: `npm run devices`
+- Delete/kill all running watchman and reset cache:  `npm run devices`
+- Run the test: `npm run jest`
 
-To get started with the project, follow these steps:
+To get started with the project, follow these steps: `npm run watch-reset`
