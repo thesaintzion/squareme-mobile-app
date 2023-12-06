@@ -1,6 +1,6 @@
 # Squareme Mobile App
 
-Welcome to Squareme Mobile App! This project is a...
+Welcome to Squareme Mobile App Demo
 
 ## Folder Structure
 
@@ -18,9 +18,10 @@ Here is an overview of the project's folder structure:
   - `store/`: Context API setup, actions, reducers
   - `utils/`: Helpers, and constants  like colors, route names, keys and sizes 
 - `App.tsx`: Main application entry point  
+- `index.js`: Main application registry  
 - `.gitignore`: Git ignore file
 - `.prettierrc`: Prettier configuration
-- `.eslintrc.js`: ESLint configuration
+- `jest.config.js`: Jest config file for unit testing
 - `react-native.config.js`: Project config file
 - `package.json`: Node.js dependencies and scripts
 - `README.md`: Project documentation

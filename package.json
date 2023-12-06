@@ -13,8 +13,7 @@
     "lint": "eslint .",
     "devices": "adb devices",
     "watch-reset": "watchman watch-del-all && npm start --reset-cache",
-    "test": "jest",
-    "build": "npx react-native build"
+    "test": "jest"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.21.0",
