@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import { View, Image, StyleSheet, Dimensions, Animated } from 'react-native';
+import React from 'react';
+import { View, Image, StyleSheet, Dimensions } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import { SlideType } from "@src/models";
@@ -9,37 +9,24 @@ import { AppText } from './AppText';
 const { width, height } = Dimensions.get('window');
 
 
-export const SlideCard: React.FC<{ item: SlideType } & {fadeAnim: Animated.Value }> = ({ item, fadeAnim }) => {
-   
+export const SlideCard: React.FC<{ item: SlideType }> = ({ item }) => {
 
     const { image, title, description } = item;
     return (
-        <Animated.View style={{ flex: 1, alignItems: 'flex-start', justifyContent: 'center', backgroundColor: colors.BLACK, overflow: 'hidden', opacity: fadeAnim, }}>
+        <View style={{ flex: 1, alignItems: 'flex-start', justifyContent: 'center', backgroundColor: colors.BLACK, overflow: 'hidden' }}>
             <Image source={image} style={{ width, height, }} resizeMode='cover' />
-            <LinearGradient colors={['rgba(105, 105, 105, 0.00)', 'rgba(0,0,0,0.8)', '#000']} style={styles.contentCon}>
 
-                <Animated.View
-                    style={{
-                        opacity: fadeAnim,
-                        transform: [
-                            {
-                                translateY: fadeAnim.interpolate({
-                                    inputRange: [0, 1],
-                                    outputRange: [10, 0],
-                                }),
-                            },
-                        ],
-                    }}
-                >
+            <LinearGradient colors={['rgba(105, 105, 105, 0.00)', 'rgba(0,0,0,0.8)', '#000']} style={styles.contentCon}>
+                <View>
                     <AppText.Bold style={styles.title}>
                         {title}
                     </AppText.Bold>
                     <AppText style={styles.description}>
                         {description}
                     </AppText>
-                </Animated.View>
+                </View>
             </LinearGradient>
-        </Animated.View>
+        </View>
     )
 }
 

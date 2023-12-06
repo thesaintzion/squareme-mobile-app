@@ -1,14 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { View, Image, FlatList, Animated, Dimensions, StatusBar, LayoutAnimation } from 'react-native';
+import React, { useRef, useState } from 'react';
+import { View, Image, FlatList, Animated, Dimensions, StatusBar } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { keys, routes } from '@src/utils/constants.util';
 import { ScreenProps, SlideType } from "@src/models";
 import { colors } from "@src/utils";
 import { AppButton, SlideCard } from '@src/components';
-
 import styles from './styles';
-import { toggleAnimation } from '@src/components/animations';
+
 
 const { width } = Dimensions.get('window');
 
@@ -34,26 +33,11 @@ const slides: SlideType[] = [
 
 export const OnboardScreen: React.FC<LocalProps> = ({ navigation }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
+
     const scrollView = useRef<FlatList>(null);
     const scrollX = new Animated.Value(0);
 
-    const fadeAnim = useRef(new Animated.Value(0)).current;
-
-    const fadeIn = () => {
-        Animated.timing(fadeAnim, {
-            toValue: 1,
-            duration: 3000,
-            useNativeDriver: false,
-        }).start();
-
-        LayoutAnimation.configureNext(toggleAnimation);
-    };
-
-
-
     const handleNext = () => {
-        // LayoutAnimation.configureNext(toggleAnimation);
-        fadeIn();
         if (currentIndex < slides.length - 1) {
             if (scrollView.current) {
                 scrollView.current.scrollToIndex({ index: currentIndex + 1 });
@@ -62,8 +46,6 @@ export const OnboardScreen: React.FC<LocalProps> = ({ navigation }) => {
     };
 
     const handleSkip = () => {
-        // LayoutAnimation.configureNext(toggleAnimation);
-        fadeIn();
         if (scrollView.current) {
             // Here we could save the state in the local storage so the user wont see this again...
             navigation.replace(routes.AUTH_WELCOME);
@@ -71,9 +53,9 @@ export const OnboardScreen: React.FC<LocalProps> = ({ navigation }) => {
     };
 
     const handleGetStarted = async () => {
-        fadeIn();
         try {
             // Save in AsyncStorage that the user has seen the welcome slides
+            // and we could use this to determine if we will show the Slide or the AuthWelcome screen when the user opens the app again...
             await AsyncStorage.setItem(keys.HAS_SEEN_WELCOME_SLIDES, 'true');
 
             // Navigate to the Login screen
@@ -83,10 +65,6 @@ export const OnboardScreen: React.FC<LocalProps> = ({ navigation }) => {
         }
     };
 
-    useEffect(() => {
-        // LayoutAnimation.configureNext(toggleAnimation);
-        fadeIn();
-    }, []);
 
     return (
         <View style={{ flex: 1, backgroundColor: colors.BLACK, position: 'relative' }}>
@@ -98,7 +76,7 @@ export const OnboardScreen: React.FC<LocalProps> = ({ navigation }) => {
                 showsHorizontalScrollIndicator={false}
                 data={slides}
                 keyExtractor={(item, index) => index.toString()}
-                renderItem={({ item, index }) => (<SlideCard item={item} key={index} fadeAnim={fadeAnim} />)}
+                renderItem={({ item, index }) => (<SlideCard item={item} key={index} />)}
                 onScroll={Animated.event([{ nativeEvent: { contentOffset: { x: scrollX } } }], { useNativeDriver: false })}
                 scrollEventThrottle={16}
                 onMomentumScrollEnd={(event) => {

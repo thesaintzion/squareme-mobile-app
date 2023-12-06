@@ -45,7 +45,5 @@ To get started with the project, follow these steps:
 - Link assets (eg: if you add new fonts..): `npm run link-assets`
 - Run lint: `npm run lint`
 - Get list of available devices on your machine: `npm run devices`
-- Delete/kill all running watchman and reset cache:  `npm run devices`
+- Delete/kill all running watchman and reset cache:  `npm run watch-reset`
 - Run the test: `npm run jest`
-
-To get started with the project, follow these steps: `npm run watch-reset`

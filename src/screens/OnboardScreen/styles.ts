@@ -33,6 +33,28 @@ const styles = StyleSheet.create({
         marginHorizontal: 3,
         borderRadius: 7,
     },
+
+
+
+    contentCon: {
+        position: 'absolute', bottom: 0,
+        width: '100%',
+        borderBottomWidth: 2,
+        height: '75%',
+        padding: 20,
+        justifyContent: 'flex-end',
+        paddingBottom: 180
+    },
+    title: {
+        color: '#FFF',
+        fontSize: 25,
+        marginBottom: 20,
+        lineHeight: 35
+    },
+    description: {
+        color: '#FFF',
+        fontSize: 15,
+    },
 });
 
 export default styles;
